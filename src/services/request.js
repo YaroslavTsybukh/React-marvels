@@ -20,11 +20,13 @@ class MarvelInfo {
 
     _transformData = (char) => {
         return {
+            id: char.id,
             name: char.name,
             description: char.description && char.description.length > 50 ? char.description.slice(0,51) + "..." : "Описания нет",
             thumbnail: char.thumbnail.path + "." + char.thumbnail.extension,
             homepage: char.urls[0].url,
-            wiki: char.urls[1].url
+            wiki: char.urls[1].url,
+            comics: char.comics.items
         }
     }
 }
