@@ -1,5 +1,7 @@
 class MarvelInfo {
     _apiKey = "9e0a30c0c5b259f9360bba6b1f9e4410"
+    _baseOffset = 110
+
     getInfo = async (url) => {
         let response = await fetch(url)
         if(!response.ok){
@@ -8,8 +10,8 @@ class MarvelInfo {
         return await response.json()
     }
 
-    getAllCharacters =  async () => {
-        let response = await this.getInfo(`https://gateway.marvel.com:443/v1/public/characters?limit=9&offset=110&apikey=${this._apiKey}`)
+    getAllCharacters =  async (offset = this._baseOffset) => {
+        let response = await this.getInfo(`https://gateway.marvel.com:443/v1/public/characters?limit=9&offset=${offset}&apikey=${this._apiKey}`)
         return response.data.results.map(this._transformData)
     }
 

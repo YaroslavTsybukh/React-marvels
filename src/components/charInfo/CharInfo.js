@@ -100,8 +100,6 @@ const ViewChar = ({charInfo}) => {
                             )
                         })
                     }
-
-
                 </ul>
             </>
         )
