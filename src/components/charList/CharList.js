@@ -82,7 +82,18 @@ class CharList extends Component{
             }
 
             return (
-                <li key={id} ref={this.setRef} className="char__item" onClick={() => {this.characterDataTransfer(id); this.onFocus(index)}}>
+                <li key={id}
+                    ref={this.setRef}
+                    tabIndex={0}
+                    className="char__item"
+                    onClick={() => {this.characterDataTransfer(id); this.onFocus(index)}}
+                    onKeyDown={(e) => {
+                        if(e.code === "Enter"){
+                            this.characterDataTransfer(id);
+                            this.onFocus(index)
+                        }
+                    }}>
+
                     <img src={thumbnail} alt="abyss" style={cssStyleThumbnail}/>
                     <div className="char__name">{name}</div>
                 </li>
